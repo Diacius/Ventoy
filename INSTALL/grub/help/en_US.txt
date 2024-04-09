@@ -1,6 +1,6 @@
  L - Language Select
 F1 - Display help information
-F2 - Browse and boot files in the local disk
+F2 - Browse and boot files on the local disk
 F3 - Switch menu mode between Treeview <-> ListView
 F4 - Boot Windows/Linux on the local disk
 F5 - Utilities
