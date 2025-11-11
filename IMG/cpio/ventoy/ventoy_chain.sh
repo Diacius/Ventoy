@@ -52,6 +52,11 @@ ventoy_get_os_type() {
         fi
     fi
 
+    # Parted Magic
+    if [ -d /pmagic ]; then
+        echo 'pmagic'; return
+    fi
+
     # PrimeOS :
     if $GREP -q 'PrimeOS' /proc/version; then
         echo 'primeos'; return
@@ -237,10 +242,6 @@ ventoy_get_os_type() {
         echo 'adelie'; return
     fi
     
-    if $GREP -q 'pmagic' /proc/version; then
-        echo 'pmagic'; return
-    fi
-    
     if $GREP -q 'CDlinux' /proc/cmdline; then
         echo 'cdlinux'; return
     fi
@@ -381,6 +382,12 @@ ventoy_get_os_type() {
     if $GREP -q '4.19.' /proc/version; then
         if [ -d /lib/dracut/hooks ]; then
             echo 'openEuler'; return
+        fi
+    fi
+    
+    if [ -f /etc/tinyramfs/config ]; then
+        if $GREP -q 'EWE_ISO' /etc/tinyramfs/config; then
+            echo "ewe"; return
         fi
     fi
     
